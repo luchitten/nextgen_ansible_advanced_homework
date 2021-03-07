@@ -11,7 +11,7 @@
     tower_host: tower1.{{tower_GUID}}.example.opentlc.com
     state: present
 
-- name: Machine Credentail to connect to workstation using openstack.pub
+- name: Machine Credentials to connect to workstation using openstack.pub
   tower_credential:
     name: Connect_to_workstation
     organization: Default
@@ -48,7 +48,7 @@
     tower-cli host associate --host "{{host_name}}" --group "{{group_name}}"
 
 
-- name: Tower Creds key file
+- name: Tower Credentials key file
   tower_credential:
     name: "{{ opentlc_cred_name }}"
     organization: Default
