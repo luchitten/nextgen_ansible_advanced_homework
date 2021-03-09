@@ -10,7 +10,7 @@
     dest: /etc/haproxy/haproxy.cfg
     mode: 0644
   notify:
-    - restart "{{ payload }}"
+    - restart {{ payload }}
 
 - name: Enable haproxy
   service:
