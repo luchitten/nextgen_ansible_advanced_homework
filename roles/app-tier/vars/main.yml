@@ -1,2 +1,4 @@
-payload:          tomcat
+app_server_packages:          
+  - tomcat
+  - python-psycopg2
 tomcat_web_root:  /usr/share/tomcat/webapps/ROOT
