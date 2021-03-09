@@ -19,4 +19,5 @@
     src: index.html.j2
     dest: "{{ tomcat_web_root }}/index.html"
     mode: 0644
-  notify: start {{ payload }}
+  notify: start_tomcat
+  
