@@ -3,8 +3,6 @@
   - name: Fetch Instance Info
     os_server_info:
       cloud: openstack
-      filters:
-        vm_state: active
     register: result
 
   - name: Delete instances
@@ -12,4 +10,4 @@
       cloud: openstack
       name: "{{ item.name }}"
       state: absent
-    loop: "{{result.ansible_facts.openstack_servers}}"
+    loop: "{{result.openstack_servers}}"
