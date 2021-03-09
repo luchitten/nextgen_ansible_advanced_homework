@@ -1,6 +1,5 @@
 ---
 # Initial, common, system setup steps
-
 - name: Enable sudo without tty for some ansible commands
   replace:
     path: /etc/sudoers
@@ -15,9 +14,11 @@
     dest: /etc/yum.repos.d/internal.repo
     mode: 0644
  
-- name: Install base tools and packages
+- name: Install base tools and packages (HTTPD and HAProxy)
   yum:
     name:
-      - httpie
-      - python-pip
+      - httpd
+      - haproxy
+      #- httpie
+      #- python-pip
     state: latest
