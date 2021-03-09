@@ -1,11 +1,8 @@
 ---
-- name: Install {{ payload }}
+- name: Install load balancer packages
   yum:
     name: "{{ payload }}"
-    state: latest
-  notify:
-    - enable {{ payload }}
-    - start {{ payload }}
+    state: present
 
 - name: Configure haproxy to load balance over app servers
   template:
@@ -14,3 +11,9 @@
     mode: 0644
   notify:
     - restart {{ payload }}
+
+- name: Enable haproxy
+  service:
+    name: {{ payload }}
+    state: started
+    enabled: true
