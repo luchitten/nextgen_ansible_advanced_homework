@@ -1,21 +1,22 @@
 ---
-- name: Install {{ payload }}
+- name: Install Tomcat packages
   yum:
-    name: "{{ payload }}"
-    state: latest
+    name: "{{ app_server_packages }}"
+    state: present
+
+- name: Enable Tomcat service daemon at boot
+  service:
+    name: tomcat
+    enabled: yes
 
 - name: Create Tomcat default web directory
   file:
     path: "{{ tomcat_web_root }}"
     state: directory
-  notify:
-    - start {{ payload }}
-    - enable {{ payload }}
 
-- name: Configure tomcat index
+- name: Copy static index.html to tomcat webapps/ansible/index.html
   template:
     src: index.html.j2
     dest: "{{ tomcat_web_root }}/index.html"
     mode: 0644
-  notify:
-    - restart {{ payload }}
+  notify: start {{ payload }}
