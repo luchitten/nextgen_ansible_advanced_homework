@@ -11,12 +11,13 @@
 - name: Enable repos
   template:
     src: repos_template.j2
-    dest: /etc/yum.repos.d/open_three-app.repo
+    #dest: /etc/yum.repos.d/open_three-app.repo
+    dest: /etc/yum.repos.d/internal.repo
     mode: 0644
  
-#- name: Install base tools and packages
-#  yum:
-#    name:
-#      - httpie
-#      - python-pip
-#    state: latest
+- name: Install base tools and packages
+  yum:
+    name:
+      - httpie
+      - python-pip
+    state: latest
